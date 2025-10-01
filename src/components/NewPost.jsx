@@ -4,21 +4,21 @@ import classes from './NewPost.module.css';
 
 function NewPost({ onCancel, onAddPost }) {
   const [enteredBody, setEnteredBody] = useState('');
-  const [enteredAuthor, setEnteredAuthor] = useState('');
+  const [enteredTitle, setEnteredTitle] = useState('');
 
   function bodyChangeHandler(event) {
     setEnteredBody(event.target.value);
   }
 
-  function authorChangeHandler(event) {
-    setEnteredAuthor(event.target.value);
+  function titleChangeHandler(event) {
+    setEnteredTitle(event.target.value);
   }
 
   function submitHandler(event) {
     event.preventDefault();
     const postData = {
       body: enteredBody,
-      author: enteredAuthor
+      title: enteredTitle
     };
     onAddPost(postData);
     onCancel();
@@ -28,7 +28,7 @@ function NewPost({ onCancel, onAddPost }) {
     <form className={classes.form} onSubmit={submitHandler}>
       <p>
         <label htmlFor="name">Title</label>
-        <input type="text" id="name" required onChange={authorChangeHandler} />
+        <input type="text" id="name" required onChange={titleChangeHandler} />
       </p>
       <p>
         <label htmlFor="body">Description</label>
